@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="styles.css">
+</head>
+<body id="pantalla">
+    <div id="interfaz">
+        
+        <form name = "calculadora">
+            <p>nota deseada <input type="textfield" id="nd" value="3" >
+            <h1>Simulador de promedio </h1>
+            <p>nota 1 <input type="text" id="n1" > porcentaje <input type="text" id="por1" value="9"  size="3" readonly>%</p>
+            <p>nota 2 <input type="text" id="n2" > porcentaje <input type="text" id="por2" value="21" size="3" readonly>%</p>
+            <p>nota 3 <input type="text" id="n3" > porcentaje <input type="text" id="por3" value="9"  size="3" readonly>%</p> 
+            <p>nota 4 <input type="text" id="n4" > porcentaje <input type="text" id="por4" value="21" size="3" readonly>%</p>
+            <p>nota 5 <input type="text" id="n5" > porcentaje <input type="text" id="por5" value="12" size="3" readonly>%</p>
+            <p>nota 6 <input type="text" id="n6" > porcentaje <input type="text" id="por6" value="28" size="3" readonly>%</p>
+            <p> <input type="button" value="simular" onclick="simularPromedio()"> <input type="reset" value="reiniciar" onclick="limpiarRespuestas()" ></p>
+            <h2> resumen de simulacion</h2>
+            <p id="prom"> promedio acumulado  </p>
+            <p id="acumulado"> porcentaje acumulado </p>
+            
+            <label id="notaR">nota requerida </label>
+            
+        </form>
+    </div>
+    
+   
+</body>
+
+<script > // el src lo use para importar jsPDF
+    function simularPromedio(){
+        var sw1=1;var sw2=1; var sw3=1;var sw4=1; var sw5=1;var sw6=1;
+        var v1 = document.getElementById("n1").value; var p1 = document.getElementById("por1").value;
+        var v2 = document.getElementById("n2").value; var p2 = document.getElementById("por2").value;
+        var v3 = document.getElementById("n3").value; var p3 = document.getElementById("por3").value;
+        var v4 = document.getElementById("n4").value; var p4 = document.getElementById("por4").value;
+        var v5 = document.getElementById("n5").value; var p5 = document.getElementById("por5").value;
+        var v6 = document.getElementById("n6").value; var p6 = document.getElementById("por6").value;
+        var notaDeseada= document.getElementById("nd").value;
+        var acum=1;
+        //validar que los campos de nota hayan sido o no llenados, en caso de no llenarlos, colocar provisionalmente un valor de 0
+        if (v1==""){
+            v1="0"; sw1=0
+        }
+        if (v2==""){
+            v2="0"; sw2=0
+        }
+        if (v3==""){
+            v3="0"; sw3=0
+        }
+        if (v4==""){
+            v4="0"; sw4=0
+        }
+        if (v5==""){
+            v5="0"; sw5=0
+        }
+        if (v6==""){
+            v6="0"; sw6=0
+        }
+        //validar que la suma de los porcentajes sea 100%
+        if ((parseFloat(p1)+parseFloat(p2)+parseFloat(p3)+parseFloat(p4)+parseFloat(p5)+parseFloat(p6))==100){
+            //calculo de resultados, dado que el porcentaje es coherente
+            var pro=(parseFloat(v1)*parseFloat(p1)+parseFloat(v2)*parseFloat(p2)+parseFloat(v3)*parseFloat(p3)+parseFloat(v4)*parseFloat(p4)+parseFloat(v5)*parseFloat(p5)+parseFloat(v6)*parseFloat(p6))/100;
+            document.getElementById("prom").innerHTML="promedio acumulado  " + pro;
+            var acum=((parseFloat(p1)*sw1+parseFloat(p2)*sw2+parseFloat(p3)*sw3+parseFloat(p4)*sw4+parseFloat(p5)*sw5+parseFloat(p6)*sw6)/100);
+            document.getElementById("acumulado").innerHTML="porcentaje acumulado " + acum;
+            //validar que el porcentaje acumulado no sea igual a 1
+            if (acum<1){
+                var notaRequerida = ((parseFloat(notaDeseada)-pro)/(1-acum));
+                notaRequerida = notaRequerida.toFixed(2);
+                document.getElementById("notaR").innerHTML="nota requerida "+ notaRequerida;
+            }
+            else{
+            document.getElementById("notaR").innerHTML="nota requerida  N/A"
+            }
+        }
+        else{
+            alert("el porcentaje no es coherente, recuerde que debe sumar 100%")
+
+        }
+
+        
+        if ((notaRequerida>=4) ){
+            notaR.classList.remove("blanco");
+            notaR.classList.add("rojo");
+        }else if (notaRequerida>3){
+            notaR.classList.remove("blanco");
+            notaR.classList.add("rojo");
+            
+            
+            } else {
+            notaR.classList.remove("rojo");
+            notaR.classList.add("brillo");
+             }       
+
+
+    }
+        
+    
+    function limpiarRespuestas(){
+        
+        document.getElementById("prom").innerHTML="promedio acumulado  " ;
+        document.getElementById("acumulado").innerHTML="porcentaje acumulado " ;
+        document.getElementById("notaR").innerHTML="nota requerida ";
+       
+        var notaR = document.getElementById("notaR");
+
+        // Remover todas las clases
+        notaR.classList.remove("brillo");
+        notaR.classList.remove("blanco");
+        notaR.classList.remove("rojo");
+
+    }
+
+</script>
+
+
+</html>

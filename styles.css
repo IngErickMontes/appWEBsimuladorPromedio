@@ -1,0 +1,148 @@
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#pantalla {
+    background-color: #000000;
+    background-image: url("espacio.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+#interfaz {
+    background-color: rgba(0, 0, 0, 0.329);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-top: 40px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    padding: 5px;
+    margin-left: 10px;
+    width: 50px;
+}
+
+input[type="button"],
+input[type="reset"] {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #333333;
+    border-color: #00eeff;
+    border: 100px;
+    border-radius: 10px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="button"]:hover,
+input[type="reset"]:hover {
+    background-color: #23527c;
+    box-shadow: 0 0 10px #ffffff;
+}
+
+
+
+input[type="button"],
+input[type="reset"] {
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-color: #fdfffe;
+    border: 10px;
+    background-color: #000000;
+    
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="button"]:hover,
+input[type="reset"]:hover {
+    background-color: #fdfffe;
+    box-shadow: 0 0 60px #ffffff;
+    color: #000000;
+}
+
+
+
+.brillo {
+    text-shadow: 0 0 30px #ffffff;
+}
+
+#notaR {
+    font-size: 18px;
+    margin-top: 1%;
+    position: center;
+    transition: text-shadow 0.5s ease;
+    box-shadow: 0 0 0px #00eeff;
+    width: 200px;
+}
+
+.brillo {
+    animation: brilloAnimacion 1s infinite alternate;
+}
+
+.blanco {
+    animation: blancoAnimacion 1s infinite alternate;
+}
+
+.rojo {
+    animation: rojoAnimacion 1s infinite alternate;
+}
+
+@keyframes brilloAnimacion {
+    0% {
+        text-shadow: 0 0 10px #ffffff;
+        box-shadow: 0 0 30px #ffffff;
+    }
+    100% {
+        text-shadow: 0 0 30px #ffffff;
+    }
+}
+
+@keyframes blancoAnimacion {
+    0% {
+        box-shadow: 0 0 30px #00eeff;
+        text-shadow: 0 0 10px #ffffff;
+    }
+    100% {
+        text-shadow: 0 0 30px #ffffff;
+    }
+}
+
+@keyframes rojoAnimacion {
+    0% {
+        box-shadow: 0 0 30px #ffffff;
+        text-shadow: 0 0 10px #ffffff;
+    }
+    100% {
+        box-shadow: 0 0 30px #ff0000;
+        text-shadow: 0 0 30px #ff0000;
+    }
+}
